@@ -3,15 +3,16 @@ import { Construct } from 'constructs';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 import { StringParameter } from 'aws-cdk-lib/aws-ssm';
+import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 
 export class LineParrotBot2Stack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const lambdaParrotingBot = new lambda.Function(this, 'LineParrotingBot', {
+    const lambdaParrotingBot = new NodejsFunction(this, 'LineParrotingBot', {
       runtime: lambda.Runtime.NODEJS_20_X,
-      handler: 'index.handler',
-      code: lambda.Code.fromAsset('src/lambda'),
+      handler: 'handler',
+      entry: 'src/lambda/index.ts',
     });
 
     // API Gateway の作成

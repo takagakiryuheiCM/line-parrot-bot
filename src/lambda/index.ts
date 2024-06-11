@@ -1,7 +1,7 @@
 import { GetParameterCommand, SSMClient } from '@aws-sdk/client-ssm';
-import { LINE_SIGNATURE_HTTP_HEADER_NAME, WebhookRequestBody, messagingApi, validateSignature } from '@line/bot-sdk';
 import { Message } from '@line/bot-sdk/lib/types';
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
+import { LINE_SIGNATURE_HTTP_HEADER_NAME, WebhookRequestBody, messagingApi, validateSignature } from '@line/bot-sdk';
 
 // Systems manager から取得するための諸々
 const ssmClient = new SSMClient();
